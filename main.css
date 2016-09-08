@@ -1,0 +1,60 @@
+ul, p {
+  padding: 0;
+  margin: 0;
+}
+ul, li {
+  list-style: none;
+}
+
+.buttons {
+  width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+button {
+  margin: 0 auto;
+}
+
+.horse-pen {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.horse {
+  display: block;
+  float: left;
+  border-radius: 50%;
+  box-sizing: border-box;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  background: brown;
+}
+
+.horse-details {
+  text-align: center;
+  font-weight: bold;
+  width: 50px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.winners-pen {
+  height: 100px;
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.winner-0 {
+  background: gold;
+}
+
+.winner-1 {
+  background: silver;
+}
+
+.winner-2 {
+  background: brown;
+}

@@ -136,7 +136,64 @@ HorseRace.prototype._shuffle = function (array) {
   return array;
 };
 
-//~~~~~~~~~~~~~~~~~~~~~TESTING~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~ Draw ~~~~~~~~~~~~~~~~~~~~~~~~~//
+var setupPage = function () {
+  document.addEventListener('DOMContentLoaded', addButtons);
+}
+
+var setupRace = function () {
+  var horseList = document.getElementById("horse-list");
+  while (horseList.firstChild) {
+    horseList.removeChild(horseList.firstChild);
+  }
+
+  horseList = document.getElementById("winners-list");
+  while (horseList.firstChild) {
+    horseList.removeChild(horseList.firstChild);
+  }
+
+  var horseRace = new HorseRace(25, 5)
+  var horses = horseRace.buildHorses();
+  drawHorses(horses, false);
+  var top3 = horseRace.sortHorses(horses);
+  drawHorses(top3, true);
+}
+
+var addButtons = function () {
+  var buttonBar = document.getElementById("button-bar");
+
+  buttonBar.appendChild(buildButton("Race New Horses", setupRace));
+}
+
+var buildButton = function (name, callback) {
+  var button = document.createElement("button");
+  button.innerHTML = name;
+  button.onclick = callback;
+
+  return button;
+}
+
+var drawHorses = function (horses, winner) {
+  if (winner) {
+    var horseList = document.getElementById("winners-list");
+  } else {
+    horseList = document.getElementById("horse-list");
+  }
+  horses.forEach(function (horse, i) {
+    var horseItem = document.createElement("li");
+    if (winner) {
+      horseItem.classList.add("winner-" + i);
+    }
+    horseItem.classList.add("horse");
+    var details = document.createElement("p");
+    details.innerHTML = "# " + horse.number + " Speed: " + horse.speed;
+    details.classList.add("horse-details");
+    horseItem.appendChild(details);
+    horseList.appendChild(horseItem);
+  });
+}
+
+//~~~~~~~~~~~~~~~~~~~~~TESTING~~~~~~~~~~~~~~~~~~~~//
 var runTests = function () {
   horseTest();
   raceTest();
@@ -256,4 +313,5 @@ var checkValue = function (value, expected) {
   }
 };
 
-runTests();
+// runTests();
+(function() {setupPage();})();
