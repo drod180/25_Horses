@@ -92,6 +92,12 @@ var HorseRace = class HorseRace {
     var top3 = this.lastRace(winners);
     return top3;
   }
+
+  run() {
+    var horses = this.buildHorses();
+    var top3 = this.sortHorses(horses);
+    console.log(top3);
+  }
 }
 
 HorseRace.prototype.race = function (horses) {
@@ -315,3 +321,7 @@ var checkValue = function (value, expected) {
 
 // runTests();
 (function() {setupPage();})();
+// (function () {
+//  var horseRace = new HorseRace(25, 5)
+// horseRace.run();
+// })();
